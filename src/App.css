@@ -1,0 +1,29 @@
+.App {
+    width: 1140px; 
+    margin: 0 auto;
+    text-align: center;
+    font-size: 32px;
+}
+.Input-title {
+    font-size: 24px;
+    color: blue;
+}
+
+.Message-autor {
+    list-style-type: none;
+    color: grey;
+    font-size: 16px;
+    padding-bottom: 20px;
+}
+.Message-text {
+    list-style-type: none;
+    color: black;
+    font-size: 20px;
+}
+.Input-btn {
+    display: block;
+    margin-right: 30px;
+}
+.Message-name{
+    color: aqua;
+}
