@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
-import { Message } from '../../pages/Chats';
+import { Message } from '../../App';
 
 interface MessageListProp {
   messages: Message[];

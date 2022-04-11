@@ -1,25 +1,27 @@
 import React, { useState, FC } from 'react';
 import { Input, Button } from '@mui/material';
+import { useDispatch } from 'react-redux';
+import { addMessageWithThunk } from '../../store/messages/actions';
+import { useParams } from 'react-router';
+import { AUTHORS } from '../../constants';
 
-interface Message {
-  text: string;
-  author: string;
-}
-
-interface FormProps {
-  addMessage: (message: Message) => void;
-}
-
-export const Form: FC<FormProps> = ({ addMessage }) => {
+export const Form: FC = () => {
+  const { chatId } = useParams<{ chatId?: string }>();
+  const dispatch = useDispatch();
   const [text, setText] = useState('');
   const textInput = React.useRef<HTMLInputElement | null>();
 
   const handleText = (ev: React.FormEvent<HTMLFormElement>) => {
     ev.preventDefault();
-    addMessage({
-      text,
-      author: 'User',
-    });
+    if (chatId) {
+      dispatch(
+        addMessageWithThunk({
+          chatId,
+          text,
+          author: AUTHORS.user,
+        })
+      );
+    }
     setText('');
   };
 

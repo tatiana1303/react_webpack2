@@ -1,31 +1,33 @@
 /* eslint-disable linebreak-style */
 
 import React, { FC } from 'react';
-import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
-import './App.css';
-import { Chats } from './pages/Chats';
-import { Main } from './pages/Main';
-import { Profile } from './pages/Profile';
-import { NavBar } from './components/NavBar/NavBar';
 import { Provider } from 'react-redux';
-import { store } from './store/index';
+import './App.css';
+import { AppRouter } from './components/AppRouter';
+import { PersistGate } from 'redux-persist/integration/react';
+import { persistor, store } from './store/index';
+
+export interface Message {
+  id: string;
+  text: string;
+  author: string;
+}
+
+export interface Chat {
+  id: string;
+  autor: string;
+}
+
+export interface Messages {
+  [key: string]: Message[];
+}
 
 export const App: FC = () => {
   return (
     <Provider store={store}>
-      <BrowserRouter>
-        <NavBar />
-        <Switch>
-          <Route exact path="/" component={Main} />
-          <Route path="/chats">
-            <Route exact path="/chats">
-              <Redirect to="/chats/1" />
-            </Route>
-            <Route path="/chats/:chatId" component={Chats} />
-          </Route>
-          <Route exact path="/profile" component={Profile} />
-        </Switch>
-      </BrowserRouter>
+      <PersistGate persistor={persistor}>
+        <AppRouter></AppRouter>
+      </PersistGate>
     </Provider>
   );
 };
