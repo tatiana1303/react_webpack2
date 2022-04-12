@@ -1,19 +1,22 @@
 import { TOGGlE_PROFILE } from './actions';
-import { Reducer, Action } from 'redux';
+import { Reducer } from 'redux';
 
-export interface RootState {
+export interface ProfileState {
   visible: boolean;
   showName: boolean;
   name: string;
 }
+export interface ProfileAction {
+  type: string;
+}
 
-const initialState: RootState = {
+const initialState: ProfileState = {
   visible: false,
   showName: false,
   name: 'User',
 };
 
-export const profileReducer: Reducer<RootState, Action> = (
+export const profileReducer: Reducer<ProfileState, ProfileAction> = (
   state = initialState,
   action
 ) => {
