@@ -7,6 +7,7 @@ import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { Chat } from './chatlist/types';
 import { MessagesState } from './messages/types';
+import { blogsReducer, BlogsState } from './blogs/reducer';
 
 declare global {
   interface Window {
@@ -20,14 +21,17 @@ export interface StoreState {
   profile: ProfileState;
   chatlist: Chat[];
   messages: MessagesState;
+  blogs: BlogsState;
 }
 
 const persistConfig = {
   key: 'root',
   storage,
+  blackList: ['profile', 'blogs'],
 };
 
 const rootReducer = combineReducers({
+  blogs: blogsReducer,
   messages: messagesReducer,
   profile: profileReducer,
   chatlist: chatListReducer,
