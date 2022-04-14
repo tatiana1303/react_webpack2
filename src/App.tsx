@@ -1,5 +1,3 @@
-/* eslint-disable linebreak-style */
-
 import React, { FC } from 'react';
 import { Provider } from 'react-redux';
 import './App.css';
@@ -26,7 +24,7 @@ export const App: FC = () => {
   return (
     <Provider store={store}>
       <PersistGate persistor={persistor}>
-        <AppRouter></AppRouter>
+        <AppRouter />
       </PersistGate>
     </Provider>
   );

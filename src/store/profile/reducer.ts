@@ -1,23 +1,22 @@
-import { TOGGlE_PROFILE } from './actions';
+import { AUTH_PROFILE, TOGGlE_PROFILE } from './actions';
 import { Reducer } from 'redux';
+import { ProfileAction } from './types';
 
 export interface ProfileState {
   visible: boolean;
   showName: boolean;
   name: string;
+  isAuth: boolean;
 }
-export interface ProfileAction {
-  type: string;
-}
-
-const initialState: ProfileState = {
+const initialProfile: ProfileState = {
   visible: false,
   showName: false,
   name: 'User',
+  isAuth: false,
 };
 
 export const profileReducer: Reducer<ProfileState, ProfileAction> = (
-  state = initialState,
+  state = initialProfile,
   action
 ) => {
   switch (action.type) {
@@ -26,6 +25,12 @@ export const profileReducer: Reducer<ProfileState, ProfileAction> = (
         ...state,
         visible: !state.visible,
         showName: !state.showName,
+      };
+    }
+    case AUTH_PROFILE: {
+      return {
+        ...state,
+        isAuth: action.isAuth,
       };
     }
     default: {

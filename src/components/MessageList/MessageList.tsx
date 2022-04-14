@@ -17,6 +17,7 @@ export const MessageList: FC<MessageListProp> = ({ messages }) => {
           m: 1,
           width: 400,
           height: 400,
+          textAlign: 'left',
         },
       }}
     >

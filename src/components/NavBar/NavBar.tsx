@@ -18,6 +18,9 @@ export const NavBar: FC = () => {
       <Typography sx={{ minWidth: 100, fontSize: 20 }}>
         <Link to="/profile">Profile</Link>
       </Typography>
+      <Typography sx={{ minWidth: 100, fontSize: 20 }}>
+        <Link to="/blogs">Blogs</Link>
+      </Typography>
     </Box>
   );
 };
